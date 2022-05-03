@@ -1,12 +1,13 @@
 >>> %Run main.py
-Added to Hand:
-♥ K
+♦ 5
+♥ J
+15
+>>> %Run main.py
+♣ J
+♥ 8
+18
+>>> %Run main.py
 ♠ 3
-♦ 9
-Discarded: ♥ K
-New Hand:
-♥ K
-♠ 3
-Discard Pile:
-♥ K
+♦ 8
+11
 >>> 
