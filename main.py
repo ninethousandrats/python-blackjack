@@ -1,11 +1,13 @@
+from Deck import Deck
 from Player import Player
 
-player1 = Player()
-player1.deck.shuffle_deck()
-player1.draw_card(3)
+deck = Deck()
+player = Player()
 
-player1.discard_card(0)
-print("New Hand:")
-player1.show_hand()
+deck.shuffle()
 
-#player1.deck.list_cards()
+for x in range (2):
+    player.draw_card(deck.deal_card())
+
+player.show_hand()
+print(player.get_hand_value())
