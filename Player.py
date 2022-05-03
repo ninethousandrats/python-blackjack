@@ -1,34 +1,30 @@
 """
 __init__(self)
-draw_card(self, quantity)
+draw_card(self, newCard)
 discard_card(self, index)
+get_hand_value(self)
 show_hand(self)
 """
 
-from Deck import Deck
+from Card import Card
 
 class Player:
     def __init__(self):
-        self.deck = Deck()
         self.hand = []
-        self.handSize = 0
+        self.handValue = 0
         
-    def draw_card(self, quantity):
-        print("Added to Hand:")
-        for i in range(quantity):
-            self.hand.append(self.deck.deal_card())
-            self.handSize += 1
-            print(self.hand[i].suit, self.hand[i].rank)
-            
+    def draw_card(self, newCard):
+        self.hand.insert(0, newCard)
+        
     def discard_card(self, index):
-        # pass a card to self.deck
-        self.deck.add_to_discard(self.hand[index])
-        self.handSize -= 1
+        return 0
+    
+    def get_hand_value(self):
+        for x in range(len(self.hand)):
+            self.handValue += self.hand[x].value
+        return self.handValue
         
     def show_hand(self):
-        for x in range(self.handSize):
-            #print(self.hand[x].value)
+        for x in range(len(self.hand)):
             print(self.hand[x].suit, self.hand[x].rank)
-            
-#        self.deck.list_cards()
-        self.deck.list_discardedCards()
+            pass
