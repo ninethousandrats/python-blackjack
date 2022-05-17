@@ -8,6 +8,7 @@ show_hand(self)
 doubleDown(self)
 split(self)
 surrender(self)
+winBet(self)
 """
 
 from Card import Card
@@ -16,6 +17,7 @@ class Player:
     def __init__(self):
         self.hand = []
         self.handValue = 0
+        self.handBet = 0
         self.chips = 50000
         
     def draw_card(self, newCard):
@@ -36,13 +38,18 @@ class Player:
         else:
             print(self.hand[0].suit, self.hand[0].rank)
             print("▯","▯")
+        
+        print(" ")
             
     def placeBet(self, bet):
-        if bet <= self.chips:
-            pass
+        if int(bet) <= self.chips:
+            self.chips -= int(bet)
+            self.handBet= int(bet)
     
     def doubleDown(self, newCard):
-        # double player bet
+        if self.handBet >= self.chips:
+            self.chips - self.handBet
+            self.handBet = self.handBet * 2
         self.hand.insert(0, newCard)
         print("double or nothin")
         
@@ -50,6 +57,11 @@ class Player:
         print("cut my hand into pieces")
         
     def surrender(self):
-        if len(self.hand) == 2:
-            print("half bet")
-        # half bet
+        self.chips += self.handBet / 2
+        print("half bet")
+        
+    def winBet(self):
+        self.chips += self.handBet
+        print("You won the hand!")
+        
+        
